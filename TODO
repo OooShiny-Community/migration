@@ -1,7 +1,18 @@
 2021-01-10
 --
+
+
 - Registered <f3lt.net> domain with namecheap.com
+
+```
+	Domain Registration 	f3lt.net	1 year	$ 10.98 
+	ICANN Fe 					$ 0.18
+	TOTAL						$ 11.16 
+```
+
+
 - Added A Record in the DNS to point to server ip : 198.74.51.225
+
 	`A	f3lt.net	198.74.51.225	1798`
 
 
