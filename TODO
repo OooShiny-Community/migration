@@ -1,8 +1,20 @@
-2021-01-10
---
+# TODO
+
+- create user
+- create docker group
+- install discourse docker via 
+	- https://github.com/discourse/discourse_docker.git
+- export mailing list data from google groups
+- import list data to discourse as topic
 
 
-- Registered <f3lt.net> domain with namecheap.com
+# LOG
+
+
+## 2021-01-10
+
+
+Registered <f3lt.net> domain with namecheap.com
 
 ```
 	Domain Registration 	f3lt.net	1 year	$ 10.98 
@@ -11,8 +23,33 @@
 ```
 
 
-- Added A Record in the DNS to point to server ip : 198.74.51.225
+Set up a VPS on Linode -- 1GB Ram, 1CPU, Ubuntu 20.04.1 LTS
+
+
+Added A Record in the DNS to point to server ip : 198.74.51.225
 
 	`A	f3lt.net	198.74.51.225	1798`
 
 
+Check to see if DNS is resolving to ip
+
+```
+	$ getent hosts f3lt.net
+	# 198.74.51.225   f3lt.net
+```
+
+
+Created local (bare) git repo
+
+	`/srv/git/repositories/f3lt.space.git`
+
+
+Installed some stuff
+
+```
+	$ whoami
+	# root
+	$ apt update
+	$ apt upgrade
+	$ apt install docker tmux
+```
