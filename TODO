@@ -1,0 +1,7 @@
+2021-01-10
+--
+- Registered <f3lt.net> domain with namecheap.com
+- Added A Record in the DNS to point to server ip : 198.74.51.225
+	`A	f3lt.net	198.74.51.225	1798`
+
+
