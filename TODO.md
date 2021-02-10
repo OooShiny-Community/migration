@@ -7,9 +7,9 @@
 - enable create-topic-by-email
 	- https://meta.discourse.org/t/replacing-mailing-lists-email-in/13099
 
-# LOG
+## LOG
 
-## 2021-02-09
+### 2021-02-09
 
 Creating Discourse user
 
@@ -33,11 +33,11 @@ Install Docker
 
 Following Discourse "Cloud" install via 
 
-- https://github.com/discourse/discourse/blob/master/docs/INSTALL-cloud.md
+	- https://github.com/discourse/discourse/blob/master/docs/INSTALL-cloud.md
 
 
 
-## 2021-01-10
+### 2021-01-10
 
 Linode VPS -- 1GB Ram, 1CPU, Ubuntu 20.04.1 LTS
 
