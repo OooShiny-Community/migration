@@ -60,8 +60,8 @@ Created local (bare) git repo
 
 Installed some stuff
 
-	$ whoami
+	whoami
 	# root
-	$ apt update
-	$ apt upgrade
-	$ apt install tmux
+	apt update
+	apt upgrade
+	apt install vim tmux
