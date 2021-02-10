@@ -13,23 +13,23 @@
 
 Creating Discourse user
 
-	`adduser discourse`
+	adduser discourse
 
 Adding discourse to sudoers
 
-	`usermod -a -G sudo discourse`
+	usermod -a -G sudo discourse
 
 Add `docker` group
 	
-	`groupadd docker`
+	groupadd docker
 
 Add discourse to docker group
 
-	`usermod -a -G docker discourse`
+	usermod -a -G docker discourse
 
 Install Docker
 
-	`apt-get install docker docker-compose`
+	apt-get install docker docker-compose
 
 Following Discourse "Cloud" install via 
 
@@ -44,20 +44,18 @@ Linode VPS -- 1GB Ram, 1CPU, Ubuntu 20.04.1 LTS
 
 Added A Record in domain DNS to point to server ip : 198.74.51.225
 
-	`A  forum.shiny.ooo  198.74.51.225  1798`
+	A  forum.shiny.ooo  198.74.51.225  1798
 
 
 Check to see if DNS is resolving to ip
 
-```
 	$ getent hosts forum.shiny.ooo
 	# 198.74.51.225   forum.shiny.ooo
-```
 
 
 Created local (bare) git repo
 
-	`/srv/git/repos/setup.git`
+	/srv/git/repos/setup.git
 
 
 Installed some stuff
