@@ -9,10 +9,18 @@
 	- https://sealedabstract.com/code/nsa-proof-your-e-mail-in-2-hours/
 	- https://workaround.org/ispmail
 	- https://www.iredmail.org/
+- [ ] Conform outgoing mail
 - [ ] Setup DNS
 	- cloudflare
 - [ ] Setup SSL/HTTPS
 	- LetsEncrypt
+- [ ] Setup receiving incoming mail to create new topics
+	- https://meta.discourse.org/t/start-a-new-topic-via-email/62977	
+	- https://github.com/discourse/mail-receiver
+	- https://meta.discourse.org/t/configuring-reply-via-email/42026
+	- https://meta.discourse.org/t/straightforward-direct-delivery-incoming-mail/49487
+	- https://meta.discourse.org/t/filtering-known-bad-sender-domains-from-your-mail-receiver/118760
+	- 
 - [ ] Export mailing list data from Google groups
 - [ ] Import list data to discourse as topic
 - [ ] Enable create-topic-by-email
