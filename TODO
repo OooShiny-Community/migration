@@ -1,10 +1,11 @@
 # TODO
 
-- install discourse docker via 
-	- https://github.com/discourse/discourse_docker.git
+- setup email server
+	- https://mailinabox.email/
 - export mailing list data from google groups
 - import list data to discourse as topic
-
+- enable create-topic-by-email
+	- https://meta.discourse.org/t/replacing-mailing-lists-email-in/13099
 
 # LOG
 
