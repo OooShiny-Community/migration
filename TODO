@@ -1,7 +1,5 @@
 # TODO
 
-- create user
-- create docker group
 - install discourse docker via 
 	- https://github.com/discourse/discourse_docker.git
 - export mailing list data from google groups
@@ -9,6 +7,34 @@
 
 
 # LOG
+
+## 2021-02-09
+
+Creating Discourse user
+
+	`adduser discourse`
+
+Adding discourse to sudoers
+
+	`usermod -a -G sudo discourse`
+
+Add `docker` group
+	
+	`groupadd docker`
+
+Add discourse to docker group
+
+	`usermod -a -G docker discourse`
+
+Install Docker
+
+	`apt-get install docker docker-compose`
+
+Following Discourse "Cloud" install via 
+
+- https://github.com/discourse/discourse/blob/master/docs/INSTALL-cloud.md
+
+
 
 ## 2021-01-10
 
@@ -40,5 +66,5 @@ Installed some stuff
 	# root
 	$ apt update
 	$ apt upgrade
-	$ apt install docker tmux
+	$ apt install tmux
 ```
