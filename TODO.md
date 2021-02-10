@@ -8,6 +8,11 @@
 	- https://workaround.org/ispmail/buster/
 	- https://sealedabstract.com/code/nsa-proof-your-e-mail-in-2-hours/
 	- https://workaround.org/ispmail
+	- https://www.iredmail.org/
+- [ ] Setup DNS
+	- cloudflare
+- [ ] Setup SSL/HTTPS
+	- LetsEncrypt
 - [ ] Export mailing list data from Google groups
 - [ ] Import list data to discourse as topic
 - [ ] Enable create-topic-by-email
