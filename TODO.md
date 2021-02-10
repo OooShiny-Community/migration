@@ -3,6 +3,11 @@
 - [ ] Setup email server
 	- https://mailinabox.email
 	- https://mailcow.email
+	- https://github.com/mailcow/mailcow-dockerized
+	- https://mailu.io/
+	- https://workaround.org/ispmail/buster/
+	- https://sealedabstract.com/code/nsa-proof-your-e-mail-in-2-hours/
+	- https://workaround.org/ispmail
 - [ ] Export mailing list data from Google groups
 - [ ] Import list data to discourse as topic
 - [ ] Enable create-topic-by-email
