@@ -1,3 +1,3 @@
 # oooshiny forum migration
 
-View [Issues](https://github.com/OooShiny-Community/migration/issues) to track progress
+View [TODO](https://github.com/OooShiny-Community/migration/blob/master/TODO.md) and [Issues](https://github.com/OooShiny-Community/migration/issues) to track progress
