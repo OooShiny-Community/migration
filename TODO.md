@@ -37,6 +37,15 @@
 ## LOG
 
 
+### 2021-02-11
+
+Setting up Cloudflare for DNS
+
+Adding `templates/cloudflare.template.yml` to app.yml and rebuilding
+
+via: https://meta.discourse.org/t/cloudflare-with-discourse/137456/7
+
+
 ### 2021-02-10
 
 Creating new VPS for Mailserver
