@@ -35,6 +35,16 @@
 ## LOG
 
 
+### 2021-02-10
+
+Creating new VPS for Mailserver
+
+	Linode VPS, 1 GB Ram, 1 CPU, Ubuntu 18.04.5 LTS
+
+Using 18.04 as per the mailinabox docs
+
+
+
 ### 2021-02-09
 
 Creating Discourse user
