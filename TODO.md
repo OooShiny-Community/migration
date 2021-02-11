@@ -15,6 +15,7 @@
 - [ ] Setup SSL/HTTPS
 	- LetsEncrypt
 - [ ] Setup receiving incoming mail to create new topics
+	- https://meta.discourse.org/t/discourse-vs-email-mailing-lists/54298/4
 	- https://meta.discourse.org/t/start-a-new-topic-via-email/62977	
 	- https://github.com/discourse/mail-receiver
 	- https://meta.discourse.org/t/configuring-reply-via-email/42026
