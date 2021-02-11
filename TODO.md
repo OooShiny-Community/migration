@@ -2,13 +2,15 @@
 
 - [ ] Setup email server
 	- https://mailinabox.email
+	- https://github.com/tonioo/modoboa
+	- https://github.com/sovereign/sovereign
 	- https://mailcow.email
 	- https://github.com/mailcow/mailcow-dockerized
 	- https://mailu.io/
+	- https://www.iredmail.org/
 	- https://workaround.org/ispmail/buster/
 	- https://sealedabstract.com/code/nsa-proof-your-e-mail-in-2-hours/
 	- https://workaround.org/ispmail
-	- https://www.iredmail.org/
 - [ ] Conform outgoing mail
 - [ ] Setup DNS
 	- cloudflare
