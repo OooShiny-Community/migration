@@ -48,6 +48,18 @@ Adding `admin` user
 	usermod -a -G sudo admin
 	usermod -a -G docker admin
 
+Switching to Admin user
+
+Installing ZSH shell
+
+    sudo apt-get install zsh zplug
+
+Installing dotfiles
+
+    https://github.com/quilime/cfg
+
+
+
 ### 2021-02-11
 
 
