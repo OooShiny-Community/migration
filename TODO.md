@@ -40,6 +40,7 @@
 
 ## LOG
 
+
 ### 2021-02-19
 
 Adding `git` group
@@ -63,6 +64,12 @@ Installing dotfiles
 
     https://github.com/quilime/cfg
 
+Experimenting with SMTP Server
+
+Making a few folders
+
+    [admin@shiny] ~/dockermail $ sudo mkdir -p /opt/dockermail/mail                                                                                                                                                                                                                                   ±[master]
+    [admin@shiny] ~/dockermail $ sudo mkdir -p /opt/dockermail/settings
 
 
 ### 2021-02-11
