@@ -42,11 +42,16 @@
 
 ### 2021-02-19
 
+Adding `git` group
+
+    groupadd git
+
 Adding `admin` user
 	
 	adduser admin
 	usermod -a -G sudo admin
 	usermod -a -G docker admin
+    usermod -a -G git admin
 
 Switching to Admin user
 
