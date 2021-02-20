@@ -109,7 +109,7 @@ Install Docker
 
 Following Discourse "Cloud" install via 
 
-	- https://github.com/discourse/discourse/blob/master/docs/INSTALL-cloud.md
+- https://github.com/discourse/discourse/blob/master/docs/INSTALL-cloud.md
 
 
 
