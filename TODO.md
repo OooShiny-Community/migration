@@ -11,6 +11,10 @@
 	- https://workaround.org/ispmail/buster/
 	- https://sealedabstract.com/code/nsa-proof-your-e-mail-in-2-hours/
 	- https://workaround.org/ispmail
+	- https://github.com/jeboehm/docker-mailserver
+	- https://github.com/namshi/docker-smtp
+	- https://github.com/docker-mailserver/docker-mailserver
+
 - [ ] Conform outgoing mail
 - [ ] Setup DNS
 	- cloudflare
@@ -36,8 +40,16 @@
 
 ## LOG
 
+### 2021-02-19
+
+Adding `admin` user
+	
+	adduser admin
+	usermod -a -G sudo admin
+	usermod -a -G docker admin
 
 ### 2021-02-11
+
 
 Setting up Cloudflare for DNS
 
