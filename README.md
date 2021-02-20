@@ -6,9 +6,6 @@ View [Log](https://github.com/OooShiny-Community/migration/blob/master/LOG.md) a
 # TODO
 
 - [ ] [Setup Mail Server](https://github.com/OooShiny-Community/migration/issues/2)
-	- [ ] Test/Confirm incoming/outgoing mail
-	- [ ] Enable create-topic-by-email
-	- [ ] Setup receiving incoming mail to create new topics
 - [ ] [Import mailing list data from Google groups](https://github.com/OooShiny-Community/migration/issues/4)
 - [x] Install Discourse via Docker
 - [x] Setup/Resolve DNS
