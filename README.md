@@ -1,7 +1,7 @@
 # Oooshiny Google Groups Migration
 
 
-View [Issues](https://github.com/OooShiny-Community/migration/issues) to track progress
+View [Log](https://github.com/OooShiny-Community/migration/blob/master/LOG.md) and [Issues](https://github.com/OooShiny-Community/migration/issues) to track progress
 
 
 
