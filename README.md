@@ -1,6 +1,6 @@
 # Oooshiny Google Groups Migration
 
-Moving on from Google Groups to a self hosted, user-maintained platform.
+Migrating from Google Groups to a self hosted, user-maintained platform.
 
 Required features:
 
