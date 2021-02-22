@@ -1,13 +1,6 @@
 # Oooshiny Google Groups Migration
 
+We are hoping to move away from Google Groups for this community and moving to a self hosted, user-maintained platform.
 
 View [Log](https://github.com/OooShiny-Community/migration/blob/master/LOG.md) and [Issues](https://github.com/OooShiny-Community/migration/issues) to track progress
 
-# TODO
-
-- [ ] [Setup Mail Server](https://github.com/OooShiny-Community/migration/issues/2)
-- [ ] [Import mailing list data from Google groups](https://github.com/OooShiny-Community/migration/issues/4)
-- [x] Install Discourse via Docker
-- [x] Setup/Resolve DNS
-- [x] Setup SSL/HTTPS via LetsEncrypt
-- [x] Setup VPS via Linode
