@@ -8,5 +8,5 @@ Required features:
  - Member’s can invite other members
  - Avoiding any third-party solutions that eventually become disrupted and we have to move again.
 
-See main [#1 Discourse Installation Progress](https://github.com/OooShiny-Community/migration/issues/1) for more details and view [Log](https://github.com/OooShiny-Community/migration/blob/master/LOG.md) and [Issues](https://github.com/OooShiny-Community/migration/issues) to track progress.
+See main [#1 Discourse Installation Progress](https://github.com/OooShiny-Community/migration/issues/1) for more details and [Issues](https://github.com/OooShiny-Community/migration/issues) to track progress.
 
