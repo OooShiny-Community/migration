@@ -4,10 +4,11 @@ ip: 50.116.8.231
 
 Linode VPS, 1GB Ram, 1CPU, Ubuntu 20.04.1 LTS
 
-## Create DNS MX Record
+## Create DNS MX Record(s)
 
-    DNX Record Type     Name    Value           TTL
-    MX                  @       mail.shiny.ooo  90sec
+    DNX Record Type     Name    Value                TTL
+    MX                  @       mail.shiny.ooo       90sec
+    MX                  @       mail.oooshiny.email  90sec      # optional, secondary server
 
 ## Preparing Mail Server Installation
 
