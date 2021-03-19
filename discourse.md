@@ -68,7 +68,7 @@ via: https://meta.discourse.org/t/cloudflare-with-discourse/137456/7
 
 ## Post Install
 
-Install fail2Ban for allow/blocklisting ips
+Install fail2Ban to allow/deny ips
 
     apt install fail2ban
 
