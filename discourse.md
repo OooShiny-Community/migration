@@ -68,22 +68,9 @@ via: https://meta.discourse.org/t/cloudflare-with-discourse/137456/7
 
 ## Post Install
 
-Install fail2ban and netdata
+Install fail2Ban for allow/blocklisting ips
 
     apt install fail2ban
-
-
-## WIP
-
-Install [netdata](https://learn.netdata.cloud/docs/agent/packaging/installer#automatic-one-line-installation-script)
-
-    bash <(curl -Ss https://my-netdata.io/kickstart.sh)
-
-View server stats. More [config](https://learn.netdata.cloud/docs/quickstart/single-node)
-
-    # TODO Enforce SSL and login
-    http://198.74.51.225:19999
-
 
 ## Links
 
