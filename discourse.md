@@ -72,6 +72,9 @@ Install fail2ban and netdata
 
     apt install fail2ban
 
+
+## WIP
+
 Install [netdata](https://learn.netdata.cloud/docs/agent/packaging/installer#automatic-one-line-installation-script)
 
     bash <(curl -Ss https://my-netdata.io/kickstart.sh)
