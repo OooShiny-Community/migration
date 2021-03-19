@@ -8,7 +8,7 @@ Linode VPS, 1GB Ram, 1CPU, Ubuntu 20.04.1 LTS
 
     DNX Record Type     Name    Value                TTL
     MX                  @       mail.shiny.ooo       90sec
-    MX                  @       mail.oooshiny.email  90sec      # optional, secondary server
+
 
 ## Preparing Mail Server Installation
 
@@ -120,7 +120,7 @@ Generate certificate
 
 When it asks you if you want to receive communications from EFF, you can choose `No`.
 
-The certificate and chain should be saved at /etc/letsencrypt/live/mail.shiny.ooo/
+The certificate and chain should be saved at `/etc/letsencrypt/live/mail.shiny.ooo/`
 
 Configure Nginx
 
@@ -254,7 +254,7 @@ The DKIM public key is in the parentheses in the response.
 In your DNS manager, create a TXT record with `dkim._domainkey` in the name field. Copy everything in the parentheses and paste into the value field. Delete all double quotes and line breaks.
 
     DNX Record Type     Name                Value                   TTL
-    TXT                 dkim._domainkey     v=DKIM1l; p= MIIsd...   90sec
+    TXT                 dkim._domainkey     v=DKIM1l; p=MIIBIj...   90sec
 
 After saving your changes, run the following to test if your DKIM record is correct.
 
@@ -278,7 +278,7 @@ mail.oooshiny.email
 
 DMARC (Domain-based Message Authentication, Reporting and Conformance) can help receiving email servers to identify legitimate emails and prevent your domain name from being used by email spoofing.
 
-To create a DMARC record, go to your DNS manager and add a TXT record. In the name field, enter `_dmarc`. In the value field, enter the following. (Make sure to reate the dmarc@shiny.ooo email address)
+To create a DMARC record, go to your DNS manager and add a TXT record. In the name field, enter `_dmarc`. In the value field, enter the following. (Be sure to create the dmarc@shiny.ooo email address).
 
     v=DMARC1; p=none; pct=100; rua=mailto:dmarc@shiny.ooo
 
@@ -292,31 +292,33 @@ Let’s Encrypt issued TLS certificate is valid for 90 days. We use Cron to auto
 
     sudo certbot renew -w /var/www/html/
 
---dry-run option to test the renewal process, instead of doing a real renewal.
+Use the `--dry-run` option to test the renewal process, instead of doing a real renewal.
 
     sudo certbot renew -w /var/www/html/ --dry-run
 
-Edit the SSL virtual host /etc/nginx/sites-enabled/00-default-ssl.conf. Add the following lines.
+Edit the SSL virtual host `/etc/nginx/sites-enabled/00-default-ssl.conf`. Add the following lines.
 
     location ~ /.well-known/acme-challenge {
         root /var/www/html/;
         allow all;
     }
 
-Save and close the file. Test Nginx configuration and reload.
+Save and close the file. Test Nginx config and reload.
 
     sudo nginx -t
     sudo systemctl reload nginx
 
+
 ### Create Cron Job
 
-If the dry run is successful, you can create Cron job to automatically renew the cert. Open root user’s crontab file:
+If the dry run is successful, create a Cron job to automatically renew the cert. Open root user’s crontab file:
 
     sudo crontab -e
 
-Then add the following line at the bottom of the file.
+Add the following line at the bottom of the file.
 
     @daily certbot renew -w /var/www/html/ --quiet && systemctl reload postfix dovecot nginx
+
 
 ## More info and Links
 
