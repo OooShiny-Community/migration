@@ -326,3 +326,5 @@ Then add the following line at the bottom of the file.
     - [Block Email Spam By Checking Header and Body in Postfix/SpamAssassin](https://www.linuxbabe.com/mail-server/block-email-spam-check-header-body-with-postfix-spamassassin)
     - [How to set up SMTP relay between 2 Postfix SMTP servers on Ubuntu](https://www.linuxbabe.com/mail-server/smtp-relay-between-2-postfix-smtp-servers)
     - [Secure Email Communication in iRedMail](http://doc.samplezone.ch/iredmail/version-0-9-2/ssl-tls-secure-communication/tls-ssl-starttls-iredmail/)
+    - [Add IP to Allowlist for Fail2Ban](https://linuxhandbook.com/fail2ban-basic/#how-to-unban-ip-blocked-by-fail2ban)
+    - [List all Banned Addresses Gist](https://gist.github.com/kamermans/1076290)
