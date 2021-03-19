@@ -59,11 +59,11 @@ via: https://meta.discourse.org/t/cloudflare-with-discourse/137456/7
 
 ## Mail server settings in /var/discourse/containers/app.yml
 
-  DISCOURSE_DEVELOPER_EMAILS: admin@shiny.ooo
-  DISCOURSE_SMTP_ADDRESS: mail.shiny.ooo
-  DISCOURSE_SMTP_PORT: 587
-  DISCOURSE_SMTP_USER_NAME: admin@shiny.ooo
-  DISCOURSE_SMTP_PASSWORD: <password>
+    DISCOURSE_DEVELOPER_EMAILS: admin@shiny.ooo
+    DISCOURSE_SMTP_ADDRESS: mail.shiny.ooo
+    DISCOURSE_SMTP_PORT: 587
+    DISCOURSE_SMTP_USER_NAME: admin@shiny.ooo
+    DISCOURSE_SMTP_PASSWORD: <password>
 
 
 ## Post Install
