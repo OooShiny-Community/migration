@@ -229,11 +229,11 @@ SPF (Sender Policy Framework) record specifies which hosts or IP address are all
 
 Explanation:
 
-    - `TXT` indicates this is a TXT record.
-    - `@` in the name field represents the main domain name.
-    - `v=spf1` indicates this is a SPF record and the version is SPF1.
-    - `mx` means all hosts listed in the MX records are allowed to send emails for your domain and all other hosts are disallowed.
-    - `~all` indicates that emails from your domain should only come from hosts specified in the SPF record. Emails that are from other hosts will be flagged as forged.
+- `TXT` indicates this is a TXT record.
+- `@` in the name field represents the main domain name.
+- `v=spf1` indicates this is a SPF record and the version is SPF1.
+- `mx` means all hosts listed in the MX records are allowed to send emails for your domain and all other hosts are disallowed.
+- `~all` indicates that emails from your domain should only come from hosts specified in the SPF record. Emails that are from other hosts will be flagged as forged.
 
 Check if your SPF record is propagated to the public Internet, you can use the dig utility on your Linux machine like below:
 
@@ -318,13 +318,13 @@ Then add the following line at the bottom of the file.
 
 ## Links
 
-    - [How to Easily Set up a Full-Fledged Mail Server on Ubuntu 20.04 with iRedMail](https://www.linuxbabe.com/mail-server/ubuntu-20-04-iredmail-server-installation)
-    - [Errors you may see while maintaining iRedMail server](https://docs.iredmail.org/errors.html#recipient-address-rejected-sender-is-not-same-as-smtp-authenticate-username)
-    - [How to Host Multiple Mail Domains in iRedMail with Nginx](https://www.linux`.com/mail-server/set-up-iredmail-multiple-domains-nginx)
-    - [How to Set up a Backup Email Server with Postfix on Ubuntu (Complete Guide)](https://www.linuxbabe.com/mail-server/how-to-set-up-a-backup-email-server-postfix-ubuntu)
-    - [Set Up OpenDMARC with Postfix on Ubuntu to Block Email Spoofing/Spam](https://www.linuxbabe.com/mail-server/opendmarc-postfix-ubuntu)
-    - [Block Email Spam By Checking Header and Body in Postfix/SpamAssassin](https://www.linuxbabe.com/mail-server/block-email-spam-check-header-body-with-postfix-spamassassin)
-    - [How to set up SMTP relay between 2 Postfix SMTP servers on Ubuntu](https://www.linuxbabe.com/mail-server/smtp-relay-between-2-postfix-smtp-servers)
-    - [Secure Email Communication in iRedMail](http://doc.samplezone.ch/iredmail/version-0-9-2/ssl-tls-secure-communication/tls-ssl-starttls-iredmail/)
-    - [Add IP to Allowlist for Fail2Ban](https://linuxhandbook.com/fail2ban-basic/#how-to-unban-ip-blocked-by-fail2ban)
-    - [List all Banned Addresses Gist](https://gist.github.com/kamermans/1076290)
+- [How to Easily Set up a Full-Fledged Mail Server on Ubuntu 20.04 with iRedMail](https://www.linuxbabe.com/mail-server/ubuntu-20-04-iredmail-server-installation)
+- [Errors you may see while maintaining iRedMail server](https://docs.iredmail.org/errors.html#recipient-address-rejected-sender-is-not-same-as-smtp-authenticate-username)
+- [How to Host Multiple Mail Domains in iRedMail with Nginx](https://www.linux`.com/mail-server/set-up-iredmail-multiple-domains-nginx)
+- [How to Set up a Backup Email Server with Postfix on Ubuntu (Complete Guide)](https://www.linuxbabe.com/mail-server/how-to-set-up-a-backup-email-server-postfix-ubuntu)
+- [Set Up OpenDMARC with Postfix on Ubuntu to Block Email Spoofing/Spam](https://www.linuxbabe.com/mail-server/opendmarc-postfix-ubuntu)
+- [Block Email Spam By Checking Header and Body in Postfix/SpamAssassin](https://www.linuxbabe.com/mail-server/block-email-spam-check-header-body-with-postfix-spamassassin)
+- [How to set up SMTP relay between 2 Postfix SMTP servers on Ubuntu](https://www.linuxbabe.com/mail-server/smtp-relay-between-2-postfix-smtp-servers)
+- [Secure Email Communication in iRedMail](http://doc.samplezone.ch/iredmail/version-0-9-2/ssl-tls-secure-communication/tls-ssl-starttls-iredmail/)
+- [Add IP to Allowlist for Fail2Ban](https://linuxhandbook.com/fail2ban-basic/#how-to-unban-ip-blocked-by-fail2ban)
+- [List all Banned Addresses Gist](https://gist.github.com/kamermans/1076290)

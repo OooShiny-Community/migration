@@ -75,7 +75,7 @@ Install fail2ban and netdata
 
 ## Links
 
-    - [Discourse Cloud Install](https://github.com/discourse/discourse/blob/master/docs/INSTALL-cloud.md)
-    - [Troubleshooting email on a new Discourse install](https://meta.discourse.org/t/troubleshooting-email-on-a-new-discourse-install/16326)
-    - [Configure Reply-By-Mail](https://meta.discourse.org/t/set-up-reply-via-email-support/14003)
-    - [Configure Backups](https://meta.discourse.org/t/configure-automatic-backups-for-discourse/14855)
+- [Discourse Cloud Install](https://github.com/discourse/discourse/blob/master/docs/INSTALL-cloud.md)
+- [Troubleshooting email on a new Discourse install](https://meta.discourse.org/t/troubleshooting-email-on-a-new-discourse-install/16326)
+- [Configure Reply-By-Mail](https://meta.discourse.org/t/set-up-reply-via-email-support/14003)
+- [Configure Backups](https://meta.discourse.org/t/configure-automatic-backups-for-discourse/14855)
