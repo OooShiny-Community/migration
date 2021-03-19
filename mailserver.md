@@ -60,17 +60,17 @@ Add executable permission to the `iRedMail.sh` script.
 
     chmod +x iRedMail.sh
 
-Next, run the Bash script with sudo privilege.
+Run the install script with sudo privilege.
 
     sudo bash iRedMail.sh
 
-The mail server setup wizard will appear. Use the `Tab` to select Yes and press `Enter`.
+The mail server setup wizard will start. Use the `Tab` to select Yes and press `Enter`.
 
-Use default storage path: /var/vmail
+Use default storage path: `/var/vmail`
 
-Use NGINX for Webserver
+Use `Nginx` for Webserver
 
-Use PostGres for Backend
+Use `PostGres` for Backend
 
 Enter in mail domain name
 
@@ -88,7 +88,7 @@ Chose optional components
 
 Review the config. Press `Y` to begin the installation.
 
-At the end of installation, choose y to use firewall rules provided by iRedMail and restart firewall.
+At the end of installation, choose y to use the firewall rules provided by iRedMail and restart the firewall.
 
 When the installation is complete. You will be notified the URL of webmail, web admin panel and the login credentials. The iRedMail.tips file contains additional info about the server
 
@@ -119,7 +119,7 @@ Generate certificate
 
 When it asks you if you want to receive communications from EFF, you can choose `No`.
 
-The certificate and chain have been saved at /etc/letsencrypt/live/mail.shiny.com/
+The certificate and chain should be saved at /etc/letsencrypt/live/mail.shiny.ooo/
 
 Configure Nginx
 
@@ -139,6 +139,7 @@ Save and close the file. Test nginx configuration and reload.
 
     sudo nginx -t
     sudo systemctl reload nginx
+
 
 ## Installing TLS Certificate in Postfix and Dovecot
 
@@ -160,7 +161,7 @@ Replace them with:
     smtpd_tls_cert_file = /etc/letsencrypt/live/mail.shiny.ooo/cert.pem
     smtpd_tls_CAfile = /etc/letsencrypt/live/mail.shiny.ooo/chain.pem
 
-Save and close the file. Then reload Postfix.
+Save and close the file. Reload Postfix.
 
     sudo systemctl reload postfix
 
@@ -178,19 +179,19 @@ Replace them with:
     ssl_cert = </etc/letsencrypt/live/mail.shiny.ooo/fullchain.pem
     ssl_key = </etc/letsencrypt/live/mail.shiny.ooo/privkey.pem
 
-Save and close the file. Then reload dovecot.
+Save and close the file. Reload dovecot.
 
     sudo systemctl reload dovecot
 
 ## Send Test Email
 
-Log into iredadmin panel with the postmaster mail account postmaster@shiny.ooo. In the Add tab, you can add additional domains or email addresses.
+Log into the iredadmin panel with the postmaster mail account postmaster@shiny.ooo. In the Add tab, you can add additional domains or email addresses.
 
-After you create a user, you can visit the Roundcube webmail address and login with the new mail user account.
+After you create an address, you can visit the Roundcube webmail address and login with the new mail user account.
 
     https://mail.your-domain.com/mail/
 
-Test sending and receiving.
+Test sending and receiving. For troubelshooting, [Errors you may see while maintaining iRedMail server](https://docs.iredmail.org/errors.html#recipient-address-rejected-sender-is-not-same-as-smtp-authenticate-username)
 
 ## Fail2ban Allowlist
 
@@ -237,19 +238,19 @@ Explanation:
 
 Check if your SPF record is propagated to the public Internet, you can use the dig utility on your Linux machine like below:
 
-    dig mail.shiny.oop txt
+    dig mail.shiny.ooo txt
 
 ### DKIM Record
 
 DKIM (DomainKeys Identified Mail) uses a private key to digitally sign emails sent from your domain. Receiving SMTP servers verify the signature by using the public key, which is published in the DNS DKIM record.
 
-The iRedMail script automatically configured DKIM for your server. The only thing left to do is creating DKIM record in DNS manager. Run the following command to show the DKIM public key.
+The iRedMail script automatically configured DKIM for your server. Run the following command to show the DKIM public key.
 
     sudo amavisd-new showkeys
 
 The DKIM public key is in the parentheses in the response.
 
-In your DNS manager, create a TXT record, enter `dkim._domainkey` in the name field. Copy everything in the parentheses and paste into the value field. Delete all double quotes and line breaks.
+In your DNS manager, create a TXT record with `dkim._domainkey` in the name field. Copy everything in the parentheses and paste into the value field. Delete all double quotes and line breaks.
 
     DNX Record Type     Name                Value                   TTL
     TXT                 dkim._domainkey     v=DKIM1l; p= MIIsd...   90sec
@@ -274,9 +275,9 @@ mail.oooshiny.email
 
 ### DMARC Record
 
-DMARC stands for Domain-based Message Authentication, Reporting and Conformance. DMARC can help receiving email servers to identify legitimate emails and prevent your domain name from being used by email spoofing.
+DMARC (Domain-based Message Authentication, Reporting and Conformance) can help receiving email servers to identify legitimate emails and prevent your domain name from being used by email spoofing.
 
-To create a DMARC record, go to your DNS manager and add a TXT record. In the name field, enter `_dmarc`. In the value field, enter the following. (You should create the dmarc@shiny.ooo email address.)
+To create a DMARC record, go to your DNS manager and add a TXT record. In the name field, enter `_dmarc`. In the value field, enter the following. (Make sure to reate the dmarc@shiny.ooo email address)
 
     v=DMARC1; p=none; pct=100; rua=mailto:dmarc@shiny.ooo
 
@@ -316,7 +317,7 @@ Then add the following line at the bottom of the file.
 
     @daily certbot renew -w /var/www/html/ --quiet && systemctl reload postfix dovecot nginx
 
-## Links
+## More info and Links
 
 - [How to Easily Set up a Full-Fledged Mail Server on Ubuntu 20.04 with iRedMail](https://www.linuxbabe.com/mail-server/ubuntu-20-04-iredmail-server-installation)
 - [Errors you may see while maintaining iRedMail server](https://docs.iredmail.org/errors.html#recipient-address-rejected-sender-is-not-same-as-smtp-authenticate-username)
