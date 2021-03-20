@@ -1,9 +1,9 @@
 # Mailserver and Discourse Installation
 
-This is documentation on how to install a Mailserver and Discourse along-side eachother on the same VPS
+This is documentation on how to install a Mailserver and Discourse along-side eachother on the same VPS. This is not recommended by the officla Discourse install due to complexities, so this guide is an attempt to document the process.
 
-    - Email: [iRedMail](https://www.iredmail.org/)
-    - Forum Software: [Discourse](https://www.discourse.org/)
+- Email: [iRedMail](https://www.iredmail.org/)
+- Forum Software: [Discourse](https://www.discourse.org/)
 
 ## Server
 
