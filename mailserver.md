@@ -15,7 +15,7 @@ Linode VPS, 1GB Ram, 1CPU, Ubuntu 20.04.1 LTS
 Creating mailadmin user
 
     adduser mailadmin
-    adduser mailadmin sudo
+    usermod -aG sudo mailadmin
     su - mailadmin
 
 Do OS upgrades
@@ -116,11 +116,11 @@ Install CertBot
 
 Generate certificate
 
-    sudo certbot certonly --webroot --agree-tos --email admin@shiny.ooo -d mail.shiny.ooo -w /var/www/html/
+    sudo certbot certonly --webroot --agree-tos --email admin@shiny.ooo -d shiny.ooo -w /var/www/html/
 
 When it asks you if you want to receive communications from EFF, you can choose `No`.
 
-The certificate and chain should be saved at `/etc/letsencrypt/live/mail.shiny.ooo/`
+The certificate and chain should be saved at `/etc/letsencrypt/live/shiny.ooo/`
 
 Configure Nginx
 
@@ -133,8 +133,8 @@ Find the following 2 lines.
 
 Replace them with:
 
-    ssl_certificate /etc/letsencrypt/live/mail.shiny.ooo/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/mail.shiny.ooo/privkey.pem;
+    ssl_certificate /etc/letsencrypt/live/shiny.ooo/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/shiny.ooo/privkey.pem;
 
 Save and close the file. Test nginx configuration and reload.
 
@@ -198,7 +198,7 @@ Test sending and receiving. For troubelshooting, [Errors you may see while maint
 
 Add the IP address of any connecting servers to the allowlist by editing the jail.local file.
 
-sudo nano /etc/fail2ban/jail.local
+    sudo nano /etc/fail2ban/jail.local
 
 Add the server IP address to the ignore list
 
@@ -319,8 +319,201 @@ Add the following line at the bottom of the file.
 
     @daily certbot renew -w /var/www/html/ --quiet && systemctl reload postfix dovecot nginx
 
+### Adding Swap Space
+
+Various components of the Mailstack use a fair amount of RAM. For example, if there’s not enough RAM on the server, ClamAV will hang, preventing outgoing mails.
+
+Add swap space with 4G capacity in root file system:
+
+    sudo fallocate -l 4G /swapfile
+
+Only root can read and write to it
+
+    sudo chmod 600 /swapfile
+
+Format it to swap:
+
+    sudo mkswap /swapfile
+    # Setting up swapspace version 1, size = 1024 MiB (1073737728 bytes)
+    # no label, UUID=0aab5886-4dfb-40d4-920d-fb1115c67433
+
+Enable the swap file
+
+    sudo swapon /swapfile
+
+mount the swap space at system boot time, edit /etc/fstab
+
+    sudo nano /etc/fstab
+
+Add the following line at the bottom
+
+    /swapfile    swap    swap     defaults    0   0
+
+Save and close the file. Then reload systemd and clamav
+
+    sudo systemctl daemon-reload
+    sudo systemctl restart clamav-daemon
+
+### Adding Additional Domains
+
+#### Add a new mail domain and user in iRedMail admin panel.
+
+#### Creating MX, A and SPF record for the new mail domain
+
+In your DNS manager, add MX record for the new domain like below.
+
+    Record Type    Name      Value
+    MX             @         mail.oooshiny.email
+
+The A record points to your mail server’s IP address.
+
+    Record Type    Name     Value
+    A              mail     50.116.8.231
+
+If your server uses IPv6 address, be sure to add AAAA record.
+
+Then create SPF record to allow the MX host to send email for the new mail domain.
+
+    Record Type    Name      Value
+    TXT            @         v=spf1 mx ~all
+
+#### Setting up DKIM signing for the new domain
+
+You need to tell amavisd to sign every outgoing email for the new mail domain. Edit `/etc/amavis/conf.d/50-user` file.
+
+    sudo nano /etc/amavis/conf.d/50-user
+
+Find the following line,
+
+    dkim_key('mail.shiny.ooo', 'dkim', '/var/lib/dkim/mail.shiny.ooo.pem');
+
+Add another line to specify the location of the private key of the second domain.
+
+    dkim_key('mail.oooshiny.email', 'dkim', '/var/lib/dkim/mail.oooshiny.email.pem');
+
+In @dkim_signature_options_bysender_maps section, add the following line.
+
+    "mail.oooshiny.email" => { d => "mail.oooshiny.email", a => 'rsa-sha256', ttl => 10*24*3600 },
+
+Save and close the file. Then generate the private key for the second domain.
+
+    sudo amavisd-new genrsa /var/lib/dkim/mail.oooshiny.email.com.pem 2048
+
+Restart Amavis.
+
+    sudo systemctl restart amavis
+
+Display the public keys.
+
+    sudo amavisd-new showkeys
+
+All public keys will be displayed. We need the public key of the second domain, which is in the parentheses.
+
+    amavis show keys
+
+In your DNS manager, create a TXT record for the second domain. Enter `dkim._domainkey` in the Name field. Copy everything in the parentheses and paste into the value field. Delete all double quotes. (You can paste it into a text editor first, delete all double quotes, the copy it to your DNS manager. Your DNS manager may require you to delete other invalid characters, such as carriage return.)
+
+After saving your changes. Check the TXT record with this command.
+
+    dig TXT dkim._domainkey.mail.oooshiny.email
+
+Now you can run the following command to test if your DKIM DNS record is correct.
+
+    sudo amavisd-new testkeys
+
+If the DNS record is correct, the test will pass.
+
+    # TESTING#1 domain1.com: dkim._domainkey.mail.shiny.ooo => pass
+    # TESTING#2 domain2.com: dkim._domainkey.mail.oooshiny.email => pass
+
+Note that your DKIM record may need sometime to propagate to the Internet. Depending on the domain registrar you use, your DNS record might be propagated instantly, or it might take up to 24 hours to propagate. Go to https://www.dmarcanalyzer.com/dkim/dkim-check/, enter dkim as the selector and enter your domain name to check DKIM record propagation.
+
+
+#### Setting Up DMARC Record For the New Domain
+
+To create a DMARC record, go to your DNS manager and add a TXT record. In the name field, enter `_dmarc`. In the value field, enter the following:
+
+    v=DMARC1; p=none; pct=100; rua=mailto:dmarc@oooshiny.email
+
+The above DMARC record is a safe starting point. To see the full explanation of DMARC, please read [Creating DMARC Record to Protect Your Domain Name From Email Spoofing])https://www.linuxbabe.com/mail-server/create-dmarc-record_
+
+
+#### Setting up RoundCube, Postfix and Dovecot for Multiple Domains
+
+It makes sense to let users of the first domain use mail.shiny.ooo and users of the second domain use mail.oooshiny.email when using RoundCube webmail.
+
+    cd /etc/nginx/
+
+Create a blank server block file for the second domain in /etc/nginx/sites-enabled/ directory.
+
+    sudo touch sites-enabled/10-mail.oooshiny.email.conf
+
+Copy the default HTTP site configurations to the file.
+
+    cat sites-enabled/00-default.conf | sudo tee -a sites-enabled/10-mail.oooshiny.email.conf
+
+Copy the default SSL site configurations to the file.
+
+    cat sites-enabled/00-default-ssl.conf | sudo tee -a sites-enabled/10-mail.oooshiny.email.conf
+
+Edit the virtual host file.
+
+    sudo nano sites-enabled/10-mail.oooshiny.email.conf
+
+Find the following line.
+
+    server_name _;
+
+We need to change the server_name to mail.oooshiny.email, because later we need to use Certbot to generate a new tls certificate.
+
+    server_name mail.oooshiny.email;
+
+There are 2 instances of server_name, you need to change both of them. Save and close the file. Then test Nginx configuration.
+
+    sudo nginx -t
+
+If the test is successful, reload Nginx for the changes to take effect.
+
+    sudo systemctl reload nginx
+
+Now use Certbot webroot plugin to obtain TLS certificate for all your mail domains, so you will have a single TLS certificate with multiple domain names on it.
+
+    sudo certbot certonly --webroot --agree-tos -d mail.shiny.ooo,mail.oooshiny.email --cert-name shiny.ooo --email admin@shiny.ooo -w /var/www/html
+
+Notice that in the above command, we specified the cert name using the first mail domain, which will be used in the file path, so you don’t have to change the file path in Postfix or Dovecot configuration file.
+
+When it asks if you want to update the existing certificate to include the new domain, answer U and hit Enter. Now you should see a message which indicates the multi-domain certificate is successfully obtained. Reload Nginx to pick up the new certificate.
+
+    sudo systemctl reload nginx
+    sudo systemctl status nginx
+
+You should now be able to use different domains to access RoundCube webmail. Also you need to reload Postfix SMTP server and Dovecot IMAP server in order to let them pick up the new certificate.
+
+    sudo systemctl reload postfix dovecot
+
+
+#### SPF and DKIM Check
+
+Now you can use your desktop email client or webmail client to send a test email to check-auth@verifier.port25.com and get a free email authentication report. You can also test email score at https://www.mail-tester.com and also test email placement with GlockApps. If DKIM check fails, you can go to https://www.dmarcanalyzer.com/dkim/dkim-check/ to see if there are any errors with your DKIM record.
+
+
+## Logs Location
+
+https://docs.iredmail.org/file.locations.html
+
+    sudo netstat -tulpn # show ports
+    /var/log/nginx/ #nginx logs location
+
 
 ## More info and Links
+
+ignored ip of discourse server in /etc/fail2ban/jail.conf
+
+https://linuxhandbook.com/fail2ban-basic/#how-to-unban-ip-blocked-by-fail2ban
+
+listing all banned address
+
+https://gist.github.com/kamermans/1076290
 
 - [How to Easily Set up a Full-Fledged Mail Server on Ubuntu 20.04 with iRedMail](https://www.linuxbabe.com/mail-server/ubuntu-20-04-iredmail-server-installation)
 - [Errors you may see while maintaining iRedMail server](https://docs.iredmail.org/errors.html#recipient-address-rejected-sender-is-not-same-as-smtp-authenticate-username)
@@ -332,3 +525,5 @@ Add the following line at the bottom of the file.
 - [Secure Email Communication in iRedMail](http://doc.samplezone.ch/iredmail/version-0-9-2/ssl-tls-secure-communication/tls-ssl-starttls-iredmail/)
 - [Add IP to Allowlist for Fail2Ban](https://linuxhandbook.com/fail2ban-basic/#how-to-unban-ip-blocked-by-fail2ban)
 - [List all Banned Addresses Gist](https://gist.github.com/kamermans/1076290)
+- [Disable Spam Filtering for Outgoing](https://docs.iredmail.org/disable.spam.virus.scanning.for.outgoing.mails.html)
+- [Completely disable Amavisd + ClamAV + SpamAssassin](https://docs.iredmail.org/completely.disable.amavisd.clamav.spamassassin.html)
