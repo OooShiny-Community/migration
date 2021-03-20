@@ -484,17 +484,18 @@ Now use Certbot webroot plugin to obtain TLS certificate for all your mail domai
 
     sudo certbot certonly --webroot --agree-tos -d mail.shiny.ooo,mail.oooshiny.email --cert-name shiny.ooo --email admin@shiny.ooo -w /var/www/html
 
-Notice that in the above command, we specified the cert name using the first mail domain, which will be used in the file path, so you don’t have to change the file path in Postfix or Dovecot configuration file.
+Notice that in the above command, we specified the cert name using the root domain, which will be used in the file path, so you don’t have to change the file path in Postfix or Dovecot configuration file.
 
 When it asks if you want to update the existing certificate to include the new domain, answer U and hit Enter. Now you should see a message which indicates the multi-domain certificate is successfully obtained. Reload Nginx to pick up the new certificate.
 
-    sudo systemctl reload nginx
-    sudo systemctl status nginx
+    sudo systemctl reload nginx # reload
+    sudo systemctl status nginx # check status
 
-You should now be able to use different domains to access RoundCube webmail. Also you need to reload Postfix SMTP server and Dovecot IMAP server in order to let them pick up the new certificate.
+Reload Postfix SMTP server and Dovecot IMAP server in order to let them pick up the new certificate.
 
     sudo systemctl reload postfix dovecot
 
+You should now be able to use different domains to access RoundCube webmail.
 
 #### SPF and DKIM Check
 
