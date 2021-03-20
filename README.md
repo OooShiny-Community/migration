@@ -17,7 +17,7 @@ Features:
 - Members can create and manage their own new-member invites
 - Optional Web front end for searching, browsing, linking
 - Passwordless login option (emails one-time login link)
-- Extensive admin/mod tools — allows us to expand the mod team (we need this)
+- Extensive admin/mod tools — allows us to expand the mod team
 - Extensive API, allowing this group to be used creatively (enables community bots, forum-centric projects, etc)
 - Categories, Tags
 
@@ -28,7 +28,7 @@ Migration Strategy (WIP):
 - Solicit feedback from the group on the tech stack, and setup
 - Post an official announcement on this group for the upcoming move and post the new forum info
 - "Stage" members on Discourse so they become active when logged in
-- Encourage members to join as easily as possible (ideally through an invite link)
+- Encourage members to join as easily as possible
 - Set Google group to read-only
 
 See main [#1 Discourse Installation Progress](https://github.com/OooShiny-Community/migration/issues/1) for more details and other [Issues](https://github.com/OooShiny-Community/migration/issues) to track progress.
