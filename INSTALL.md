@@ -507,31 +507,10 @@ Now you can use your desktop email client or webmail client to send a test email
 https://docs.iredmail.org/file.locations.html
 
     sudo netstat -tulpn # show ports
-    /var/log/nginx/ #nginx logs location
+    /var/log/nginx/ # nginx logs location
 
 
-## More info and Links
 
-ignored ip of discourse server in /etc/fail2ban/jail.conf
-
-https://linuxhandbook.com/fail2ban-basic/#how-to-unban-ip-blocked-by-fail2ban
-
-listing all banned address
-
-https://gist.github.com/kamermans/1076290
-
-- [How to Easily Set up a Full-Fledged Mail Server on Ubuntu 20.04 with iRedMail](https://www.linuxbabe.com/mail-server/ubuntu-20-04-iredmail-server-installation)
-- [Errors you may see while maintaining iRedMail server](https://docs.iredmail.org/errors.html#recipient-address-rejected-sender-is-not-same-as-smtp-authenticate-username)
-- [How to Host Multiple Mail Domains in iRedMail with Nginx](https://www.linux`.com/mail-server/set-up-iredmail-multiple-domains-nginx)
-- [How to Set up a Backup Email Server with Postfix on Ubuntu (Complete Guide)](https://www.linuxbabe.com/mail-server/how-to-set-up-a-backup-email-server-postfix-ubuntu)
-- [Set Up OpenDMARC with Postfix on Ubuntu to Block Email Spoofing/Spam](https://www.linuxbabe.com/mail-server/opendmarc-postfix-ubuntu)
-- [Block Email Spam By Checking Header and Body in Postfix/SpamAssassin](https://www.linuxbabe.com/mail-server/block-email-spam-check-header-body-with-postfix-spamassassin)
-- [How to set up SMTP relay between 2 Postfix SMTP servers on Ubuntu](https://www.linuxbabe.com/mail-server/smtp-relay-between-2-postfix-smtp-servers)
-- [Secure Email Communication in iRedMail](http://doc.samplezone.ch/iredmail/version-0-9-2/ssl-tls-secure-communication/tls-ssl-starttls-iredmail/)
-- [Add IP to Allowlist for Fail2Ban](https://linuxhandbook.com/fail2ban-basic/#how-to-unban-ip-blocked-by-fail2ban)
-- [List all Banned Addresses Gist](https://gist.github.com/kamermans/1076290)
-- [Disable Spam Filtering for Outgoing](https://docs.iredmail.org/disable.spam.virus.scanning.for.outgoing.mails.html)
-- [Completely disable Amavisd + ClamAV + SpamAssassin](https://docs.iredmail.org/completely.disable.amavisd.clamav.spamassassin.html)
 
 
 # Installing Discourse
@@ -539,17 +518,16 @@ https://gist.github.com/kamermans/1076290
 
 ## Adding DNS Record
 
-Added A Record for a new subdomain to point to server ip
+Added A Record for a new subdomain to point to the server ip
 
     A  forum.shiny.ooo  50.116.8.231  1798
 
+
 ## Environment
 
-Make sure env is up to date
+Confirm env is up to date
 
     sudo -s # switch to root
-    whoami
-    # root
     apt update
     apt upgrade
     apt-get install docker docker-compose
@@ -558,6 +536,7 @@ Check to see if DNS is resolving to ip
 
     getent hosts forum.shiny.ooo
     # 50.116.8.231   forum.shiny.ooo
+
 
 ## Install Discourse via Docker
 
@@ -678,7 +657,25 @@ Enable automatic upgrades
     dpkg-reconfigure -plow unattended-upgrades
 
 
-## Links
+## More info and Links
+
+- [How to Easily Set up a Full-Fledged Mail Server on Ubuntu 20.04 with iRedMail](https://www.linuxbabe.com/mail-server/ubuntu-20-04-iredmail-server-installation)
+- [Errors you may see while maintaining iRedMail server](https://docs.iredmail.org/errors.html#recipient-address-rejected-sender-is-not-same-as-smtp-authenticate-username)
+- [How to Host Multiple Mail Domains in iRedMail with Nginx](https://www.linux`.com/mail-server/set-up-iredmail-multiple-domains-nginx)
+- [How to Set up a Backup Email Server with Postfix on Ubuntu (Complete Guide)](https://www.linuxbabe.com/mail-server/how-to-set-up-a-backup-email-server-postfix-ubuntu)
+- [Set Up OpenDMARC with Postfix on Ubuntu to Block Email Spoofing/Spam](https://www.linuxbabe.com/mail-server/opendmarc-postfix-ubuntu)
+- [Block Email Spam By Checking Header and Body in Postfix/SpamAssassin](https://www.linuxbabe.com/mail-server/block-email-spam-check-header-body-with-postfix-spamassassin)
+- [How to set up SMTP relay between 2 Postfix SMTP servers on Ubuntu](https://www.linuxbabe.com/mail-server/smtp-relay-between-2-postfix-smtp-servers)
+- [Secure Email Communication in iRedMail](http://doc.samplezone.ch/iredmail/version-0-9-2/ssl-tls-secure-communication/tls-ssl-starttls-iredmail/)
+- [Add IP to Allowlist for Fail2Ban](https://linuxhandbook.com/fail2ban-basic/#how-to-unban-ip-blocked-by-fail2ban)
+- [List all Banned Addresses Gist](https://gist.github.com/kamermans/1076290)
+- [Disable Spam Filtering for Outgoing](https://docs.iredmail.org/disable.spam.virus.scanning.for.outgoing.mails.html)
+- [Completely disable Amavisd + ClamAV + SpamAssassin](https://docs.iredmail.org/completely.disable.amavisd.clamav.spamassassin.html)
+- [Unblock IP's that have been blocked by fail2ban](https://linuxhandbook.com/fail2ban-basic/#how-to-unban-ip-blocked-by-fail2ban)
+- [Show Ignored IP's Gist](https://gist.github.com/kamermans/1076290)
+
+
+### Discourse
 
 - [Discourse Cloud Install](https://github.com/discourse/discourse/blob/master/docs/INSTALL-cloud.md)
 - [Troubleshooting email on a new Discourse install](https://meta.discourse.org/t/troubleshooting-email-on-a-new-discourse-install/16326)
@@ -687,4 +684,3 @@ Enable automatic upgrades
 - [Running Discourse alongside other websites](https://meta.discourse.org/t/running-other-websites-on-the-same-machine-as-discourse/17247)
 - [Multiple Discourse Installs](https://linuxhandbook.com/multiple-discourse-install/)
 - [Add offline page when rebuilding](https://meta.discourse.org/t/adding-an-offline-page-when-rebuilding/45238)
-
