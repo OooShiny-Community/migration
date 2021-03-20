@@ -1,4 +1,4 @@
-# Oooshiny Google Groups Migration
+# OooShiny Google Groups Migration
 
 Migrating from Google Groups to a self hosted, member-maintained platform.
 
