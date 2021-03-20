@@ -57,17 +57,11 @@ Verify the changes
 
 This server setup was inspired and modifed from this tutorial: [How to Easily Set up a Full-Fledged Mail Server on Ubuntu 20.04 with iRedMail](https://www.linuxbabe.com/mail-server/ubuntu-20-04-iredmail-server-installation)
 
-Download iRedMail
+Download iRedMail, extract the archived file, cd in, change permissions, and run
 
     wget https://github.com/iredmail/iRedMail/archive/1.3.2.tar.gz
-
-Extract the archived file and cd in
-
     tar xvf 1.3.2.tar.gz
     cd iRedMail-1.3.2/
-
-Add +x permission to `iRedMail.sh` and run with bash
-
     chmod +x iRedMail.sh
     sudo bash iRedMail.sh
 
