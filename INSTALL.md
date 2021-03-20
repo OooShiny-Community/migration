@@ -520,7 +520,7 @@ https://docs.iredmail.org/file.locations.html
 
 Added A Record for a new subdomain to point to the server ip
 
-    A  forum.shiny.ooo  50.116.8.231  1798
+    A  forum.shiny.ooo  50.116.8.231
 
 
 ## Environment
