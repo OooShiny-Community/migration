@@ -52,6 +52,8 @@ Referencing Discourse "Cloud" docker install via
 
 - https://github.com/discourse/discourse/blob/master/docs/INSTALL-cloud.md
 
+With some changes, as we are installing Discourse on the same server as our mail server.
+
 As root, Clone the Official Discourse Docker Image into /var/discourse. You must be root throughout the install process
 
     sudo -s
@@ -127,6 +129,8 @@ Create file `/etc/nginx/sites-available/20-forum.shiny.ooo.conf`
         listen [::]:443 ssl http2;
         server_name forum.shiny.ooo;
 
+        root /var/www/html;
+
         include /etc/nginx/templates/misc.tmpl;
         include /etc/nginx/templates/ssl.tmpl;
         include /etc/nginx/templates/discourse.tmpl;
@@ -160,6 +164,7 @@ Navigate to `forum.shiny.ooo` to complete setting up Discourse
 Enable automatic upgrades
 
     dpkg-reconfigure -plow unattended-upgrades
+
 
 ## Links
 
