@@ -645,6 +645,15 @@ Enable automatic upgrades
     dpkg-reconfigure -plow unattended-upgrades
 
 
+## Relevant links after installation
+
+- https://mail.shiny.ooo/mail/ - Roundcube Webmail
+- https://mail.oooshiny.email/mail/ - Alt Domain Roundcube Webmail
+- https://mail.shiny.ooo/iredadmin/ - IRedMail Email Admin
+- https://mail.shiny.ooo/netdata/ - NetData Server Stats Dashboard
+- https://forum.shiny.ooo/ - Discourse
+
+
 ## More info and Links
 
 - [How to Easily Set up a Full-Fledged Mail Server on Ubuntu 20.04 with iRedMail](https://www.linuxbabe.com/mail-server/ubuntu-20-04-iredmail-server-installation)
