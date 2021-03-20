@@ -61,20 +61,14 @@ Download iRedMail
 
     wget https://github.com/iredmail/iRedMail/archive/1.3.2.tar.gz
 
-Extract the archived file.
+Extract the archived file and cd in
 
     tar xvf 1.3.2.tar.gz
-
-Then cd into the newly-created directory.
-
     cd iRedMail-1.3.2/
 
-Add executable permission to the `iRedMail.sh` script.
+Add +x permission to `iRedMail.sh` and run with bash
 
     chmod +x iRedMail.sh
-
-Run the install script with sudo privilege.
-
     sudo bash iRedMail.sh
 
 The mail server setup wizard will start. Use the `Tab` to select Yes and press `Enter`.
@@ -101,7 +95,7 @@ Chose optional components
 
 Review the config. Press `Y` to begin the installation.
 
-At the end of installation, choose y to use the firewall rules provided by iRedMail and restart the firewall.
+At the end of installation, choose `y` to use the firewall rules provided by iRedMail and restart the firewall.
 
 When the installation is complete. You will be notified the URL of webmail, web admin panel and the login credentials. The iRedMail.tips file contains additional info about the server
 
@@ -113,7 +107,7 @@ Config
 
 Reboot the server
 
-    sudo shutdown -r now
+    sudo reboot
 
 Once rebooted, visit the web panel
 
