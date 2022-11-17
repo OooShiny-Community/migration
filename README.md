@@ -30,12 +30,12 @@ SendGrid (also known as Twilio SendGrid) is a SaaS for transactional email, aqui
 
 Virtual private server with custom domain and Email service cost breakdown
 
-- $4 to $10 a month - Basic VPS "Droplet" from [Digital Ocean](https://www.digitalocean.com/pricing/droplets) starts at $4.
-- $20 to $100 per month - Sendgrid Mail Service 100k to 1.5mm+ emails monthly. Used for user-auth, tokens, updates, digests, etc.
+- 4 to 10 a month - Basic VPS "Droplet" from [Digital Ocean](https://www.digitalocean.com/pricing/droplets) starts at $4.
+- 20 to 100 USD per month - Sendgrid Mail Service 100k to 1.5mm+ emails monthly. Used for user-auth, tokens, updates, digests, etc.
 
-Total costs per month:
+Total costs
 
-$45 to $120 per month total, $ 540 to $ 1500 per year.
+540 to 1500 USD per year
 
 
 ## Past (depricated) Candidates
